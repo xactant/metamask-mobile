@@ -118,8 +118,11 @@ const persistConfig = {
   migrate: createMigrate(migrations, { debug: false }),
   timeout: TIMEOUT,
   writeFailHandler: async (error) => {
-    Logger.error(error, { message: 'Error persisting data' }), // Log error if saving state fails
-      await getVaultFromBackup();
+    Logger.error(error, { message: 'Error persisting data' }); // Log error if saving state fails
+    const vault = await getVaultFromBackup();
+    if (vault) {
+      console.log(vault);
+    }
   },
 };
 
