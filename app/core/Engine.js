@@ -404,7 +404,9 @@ class Engine {
       this.startPolling();
       Engine.instance = this;
     }
-    backupVault(KeyringController.state);
+    backupVault(this.context.KeyringController.state).then(
+      console.log('engine backup worked'),
+    );
     return Engine.instance;
   }
 

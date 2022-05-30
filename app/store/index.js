@@ -13,8 +13,9 @@ import { migrations, version } from './migrations';
 import Logger from '../util/Logger';
 import EngineService from '../core/EngineService';
 import Device from '../util/device';
+import { getVaultFromBackup } from '../core/backupVault';
 
-const TIMEOUT = 40000;
+const TIMEOUT = 1;
 
 const MigratedStorage = {
   async getItem(key) {
@@ -116,8 +117,10 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2, // see "Merge Process" section for details.
   migrate: createMigrate(migrations, { debug: false }),
   timeout: TIMEOUT,
-  writeFailHandler: (error) =>
+  writeFailHandler: async (error) => {
     Logger.error(error, { message: 'Error persisting data' }), // Log error if saving state fails
+      await getVaultFromBackup();
+  },
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);
