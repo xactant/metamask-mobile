@@ -1,4 +1,6 @@
 import UntypedEngine from './Engine';
+import { getVaultFromBackup } from '../core/backupVault';
+import { KeyringController } from '@metamask/controllers';
 
 const UPDATE_BG_STATE_KEY = 'UPDATE_BG_STATE';
 const INIT_BG_STATE_KEY = 'INIT_BG_STATE';
@@ -69,6 +71,44 @@ class EngineService {
       else Engine.controllerMessenger.subscribe(key, update_bg_state_cb);
     });
   };
+
+  /**
+   * Initializer for the EngineService
+   *
+   * @param store - Redux store
+   */
+  async initalizeVaultFromBackup() {
+    const Engine = UntypedEngine as any;
+    Engine.init();
+
+    const { PreferencesController } = Engine.context;
+
+    const vault = await getVaultFromBackup();
+    if (vault) {
+      // Engine.context['KeyringController'].subscribe(update_bg_state_cb)
+      const keyringController = new KeyringController(
+        {
+          removeIdentity: PreferencesController.removeIdentity.bind(
+            PreferencesController,
+          ),
+          syncIdentities: PreferencesController.syncIdentities.bind(
+            PreferencesController,
+          ),
+          updateIdentities: PreferencesController.updateIdentities.bind(
+            PreferencesController,
+          ),
+          setSelectedAddress: PreferencesController.setSelectedAddress.bind(
+            PreferencesController,
+          ),
+          setAccountLabel: PreferencesController.setAccountLabel.bind(
+            PreferencesController,
+          ),
+        },
+        {},
+        { vault },
+      );
+    }
+  }
 }
 
 /**

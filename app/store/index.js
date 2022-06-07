@@ -15,7 +15,7 @@ import EngineService from '../core/EngineService';
 import Device from '../util/device';
 import { getVaultFromBackup } from '../core/backupVault';
 
-const TIMEOUT = 1;
+const TIMEOUT = 0;
 
 const MigratedStorage = {
   async getItem(key) {
@@ -119,10 +119,7 @@ const persistConfig = {
   timeout: TIMEOUT,
   writeFailHandler: async (error) => {
     Logger.error(error, { message: 'Error persisting data' }); // Log error if saving state fails
-    const vault = await getVaultFromBackup();
-    if (vault) {
-      console.log(vault);
-    }
+    EngineService.initalizeVaultFromBackup();
   },
 };
 
@@ -134,6 +131,7 @@ export const store = createStore(pReducer);
  * Initialize services after persist is completed
  */
 const onPersistComplete = () => {
+  console.log('onPersistComplete');
   EngineService.initalizeEngine(store);
 };
 
