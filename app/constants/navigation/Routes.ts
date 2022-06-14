@@ -26,6 +26,10 @@ const Routes = {
     LOGIN: 'Login',
     NAV: 'OnboardingNav',
   },
+  VAULT_RECOVERY: {
+    ID: 'VaultRecovery',
+    RESTORE_WALLET: 'RestoreWallet',
+  },
 };
 
 export default Routes;

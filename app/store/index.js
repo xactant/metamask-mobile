@@ -13,9 +13,8 @@ import { migrations, version } from './migrations';
 import Logger from '../util/Logger';
 import EngineService from '../core/EngineService';
 import Device from '../util/device';
-import { getVaultFromBackup } from '../core/backupVault';
 
-const TIMEOUT = 0;
+const TIMEOUT = 1000;
 
 const MigratedStorage = {
   async getItem(key) {

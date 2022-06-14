@@ -44,6 +44,7 @@ import { mockTheme, useAppThemeFromContext } from '../../../util/theme';
 import Device from '../../../util/device';
 import { colors as importedColors } from '../../../styles/common';
 import Routes from '../../../constants/navigation/Routes';
+import { RestoreWallet } from '../../Views/RestoreWallet';
 
 const Stack = createStackNavigator();
 /**
@@ -136,6 +137,19 @@ const OnboardingRootNav = () => (
       name="Webview"
       header={null}
       component={SimpleWebviewScreen}
+    />
+  </Stack.Navigator>
+);
+
+const VaultRecoveryFlow = () => (
+  <Stack.Navigator
+    initialRouteName={Routes.VAULT_RECOVERY.RESTORE_WALLET}
+    mode="modal"
+    screenOptions={{ headerShown: false }}
+  >
+    <Stack.Screen
+      name={Routes.VAULT_RECOVERY.RESTORE_WALLET}
+      component={RestoreWallet}
     />
   </Stack.Navigator>
 );
@@ -371,6 +385,10 @@ const App = ({ userLoggedIn }) => {
               name="OnboardingRootNav"
               component={OnboardingRootNav}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name={Routes.VAULT_RECOVERY.ID}
+              component={VaultRecoveryFlow}
             />
             {userLoggedIn && (
               <Stack.Screen

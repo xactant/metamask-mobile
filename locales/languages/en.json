@@ -2137,5 +2137,14 @@
   "download_files": {
     "error": "Failed to download attachment.",
     "unknownError": "Unknown error occurred"
-  }
+  },
+  "vault_recovery": {
+    "restore_needed_title": "Restore needed",
+    "restore_needed_description": "Something has gone wrong but don’t worry! Let’s try to restore your wallet.",
+    "restore_needed_action": "Restore wallet",
+    "wallet_restored": "Wallet restored!",
+    "wallet_restored_description": "We we’re able to restore your wallet this time but take a moment to back up your Secret Recovery Phrase so you’ll always be able to restore your wallet.",
+    "wallet_restored_manual_backup": " You may need to manually add back some assets and networks.",
+    "wallet_restored_action": "Continue to wallet"
+ } 
 }
