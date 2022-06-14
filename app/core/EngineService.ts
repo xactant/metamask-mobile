@@ -80,34 +80,6 @@ class EngineService {
   async initalizeVaultFromBackup() {
     const Engine = UntypedEngine as any;
     Engine.init();
-
-    const { PreferencesController } = Engine.context;
-
-    const vault = await getVaultFromBackup();
-    if (vault) {
-      // Engine.context['KeyringController'].subscribe(update_bg_state_cb)
-      const keyringController = new KeyringController(
-        {
-          removeIdentity: PreferencesController.removeIdentity.bind(
-            PreferencesController,
-          ),
-          syncIdentities: PreferencesController.syncIdentities.bind(
-            PreferencesController,
-          ),
-          updateIdentities: PreferencesController.updateIdentities.bind(
-            PreferencesController,
-          ),
-          setSelectedAddress: PreferencesController.setSelectedAddress.bind(
-            PreferencesController,
-          ),
-          setAccountLabel: PreferencesController.setAccountLabel.bind(
-            PreferencesController,
-          ),
-        },
-        {},
-        { vault },
-      );
-    }
   }
 }
 

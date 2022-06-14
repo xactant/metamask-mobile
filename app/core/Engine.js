@@ -72,9 +72,9 @@ class Engine {
   /**
    * Creates a CoreController instance
    */
-  constructor(initialState = {}) {
+  constructor(initialState = {}, vault = null) {
     if (!Engine.instance) {
-      console.log('Engine', initialState);
+      console.log('Engine', initialState.KeyringController);
       const preferencesController = new PreferencesController(
         {},
         {

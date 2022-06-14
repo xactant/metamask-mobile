@@ -118,7 +118,7 @@ const persistConfig = {
   timeout: TIMEOUT,
   writeFailHandler: async (error) => {
     Logger.error(error, { message: 'Error persisting data' }); // Log error if saving state fails
-    EngineService.initalizeVaultFromBackup();
+    // EngineService.initalizeVaultFromBackup();
   },
 };
 
@@ -131,7 +131,7 @@ export const store = createStore(pReducer);
  */
 const onPersistComplete = () => {
   console.log('onPersistComplete');
-  EngineService.initalizeEngine(store);
+  EngineService.initalizeVaultFromBackup();
 };
 
 export const persistor = persistStore(store, null, onPersistComplete);
