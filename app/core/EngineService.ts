@@ -1,6 +1,5 @@
 import UntypedEngine from './Engine';
 import { getVaultFromBackup } from '../core/backupVault';
-import { KeyringController } from '@metamask/controllers';
 
 const UPDATE_BG_STATE_KEY = 'UPDATE_BG_STATE';
 const INIT_BG_STATE_KEY = 'INIT_BG_STATE';
@@ -77,9 +76,14 @@ class EngineService {
    *
    * @param store - Redux store
    */
-  async initalizeVaultFromBackup() {
+  async initalizeVaultFromBackup(store: any) {
+    console.log('EngineService initalizeVaultFromBackup');
+    const vault = await getVaultFromBackup();
+    console.log('EngineService vault', vault);
+    const reduxState = store.getState?.();
+    const state = reduxState?.engine?.backgroundState || {};
     const Engine = UntypedEngine as any;
-    Engine.init();
+    Engine.init(state, vault);
   }
 }
 

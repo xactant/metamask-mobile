@@ -14,7 +14,7 @@ import Logger from '../util/Logger';
 import EngineService from '../core/EngineService';
 import Device from '../util/device';
 
-const TIMEOUT = 1000;
+const TIMEOUT = 40000;
 
 const MigratedStorage = {
   async getItem(key) {
@@ -131,7 +131,8 @@ export const store = createStore(pReducer);
  */
 const onPersistComplete = () => {
   console.log('onPersistComplete');
-  EngineService.initalizeVaultFromBackup();
+  // EngineService.initalizeVaultFromBackup(store);
+  EngineService.initalizeEngine(store);
 };
 
 export const persistor = persistStore(store, null, onPersistComplete);
