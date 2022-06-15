@@ -86,13 +86,15 @@ class EngineService {
     // console.log('EngineService vault from backup', vaultFromBackup);
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
-    const vault =
-      state?.KeyringController !== undefined
-        ? state.KeyringController
-        : undefined;
-    console.log('EngineService', state, vault);
+    const vault = await getVaultFromBackup();
     const Engine = UntypedEngine as any;
-    Engine.init(state, undefined);
+    if (vault) {
+      console.log('EngineService using vault backup', vault);
+      Engine.init(state, vault);
+    } else {
+      console.log('EngineService no vault');
+      Engine.init(state, undefined);
+    }
 
     this.updateControllers(store, Engine);
   }
