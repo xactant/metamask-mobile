@@ -131,8 +131,8 @@ export const store = createStore(pReducer);
  */
 const onPersistComplete = () => {
   console.log('onPersistComplete');
-  // EngineService.initalizeVaultFromBackup(store);
-  EngineService.initalizeEngine(store);
+  EngineService.initalizeVaultFromBackup(store);
+  // EngineService.initalizeEngine(store);
 };
 
 export const persistor = persistStore(store, null, onPersistComplete);

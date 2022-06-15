@@ -12,13 +12,17 @@ class EngineService {
    *
    * @param store - Redux store
    */
+
   initalizeEngine = (store: any) => {
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
     const Engine = UntypedEngine as any;
 
     Engine.init(state);
+    this.updateControllers(store, Engine);
+  };
 
+  private updateControllers = (store: any, engine: any) => {
     const controllers = [
       { name: 'AccountTrackerController' },
       { name: 'AddressBookController' },
@@ -39,23 +43,23 @@ class EngineService {
       { name: 'SwapsController' },
       {
         name: 'TokenListController',
-        key: `${Engine.context.TokenListController.name}:stateChange`,
+        key: `${engine.context.TokenListController.name}:stateChange`,
       },
       {
         name: 'CurrencyRateController',
-        key: `${Engine.context.CurrencyRateController.name}:stateChange`,
+        key: `${engine.context.CurrencyRateController.name}:stateChange`,
       },
       {
         name: 'GasFeeController',
-        key: `${Engine.context.GasFeeController.name}:stateChange`,
+        key: `${engine.context.GasFeeController.name}:stateChange`,
       },
       {
         name: 'ApprovalController',
-        key: `${Engine.context.ApprovalController.name}:stateChange`,
+        key: `${engine.context.ApprovalController.name}:stateChange`,
       },
     ];
 
-    Engine?.datamodel?.subscribe?.(() => {
+    engine?.datamodel?.subscribe?.(() => {
       if (!this.engineInitialized) {
         store.dispatch({ type: INIT_BG_STATE_KEY });
         this.engineInitialized = true;
@@ -66,8 +70,8 @@ class EngineService {
       const { name, key = undefined } = controller;
       const update_bg_state_cb = () =>
         store.dispatch({ type: UPDATE_BG_STATE_KEY, key: name });
-      if (!key) Engine.context[name].subscribe(update_bg_state_cb);
-      else Engine.controllerMessenger.subscribe(key, update_bg_state_cb);
+      if (!key) engine.context[name].subscribe(update_bg_state_cb);
+      else engine.controllerMessenger.subscribe(key, update_bg_state_cb);
     });
   };
 
@@ -78,12 +82,19 @@ class EngineService {
    */
   async initalizeVaultFromBackup(store: any) {
     console.log('EngineService initalizeVaultFromBackup');
-    const vault = await getVaultFromBackup();
-    console.log('EngineService vault', vault);
+    // const vaultFromBackup = await getVaultFromBackup();
+    // console.log('EngineService vault from backup', vaultFromBackup);
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
+    const vault =
+      state?.KeyringController !== undefined
+        ? state.KeyringController
+        : undefined;
+    console.log('EngineService', state, vault);
     const Engine = UntypedEngine as any;
-    Engine.init(state, vault);
+    Engine.init(state, undefined);
+
+    this.updateControllers(store, Engine);
   }
 }
 
