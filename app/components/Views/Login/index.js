@@ -406,6 +406,7 @@ class Login extends PureComponent {
         );
         this.setState({ loading: false });
       } else if (toLowerCaseEquals(error, VAULT_ERROR)) {
+        console.log('Login', error);
         this.setState({
           loading: false,
           error: strings('login.clean_vault_error'),

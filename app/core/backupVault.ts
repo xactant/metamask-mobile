@@ -14,6 +14,12 @@ const options: Options = {
   accessible: ACCESSIBLE.WHEN_UNLOCKED,
 };
 
+interface KeyRingBackupResponse {
+  success: boolean;
+  message: string;
+  vault?: string;
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export const backupVault = async (keyRingState: KeyringState) => {
   if (keyRingState.vault) {
@@ -25,13 +31,26 @@ export const backupVault = async (keyRingState: KeyringState) => {
     );
     if (backupResult === false) {
       Logger.log(VAULT_BACKUP_KEY, 'Vault backup failed');
-      return false;
+      const response: KeyRingBackupResponse = {
+        success: false,
+        message: 'Vault backup failed',
+      };
+      return response;
     }
     Logger.log(VAULT_BACKUP_KEY, 'Vault successfully backed up');
-    return true;
+    const response: KeyRingBackupResponse = {
+      success: true,
+      message: 'Vault successfully backed up',
+      vault: keyRingState.vault,
+    };
+    return response;
   }
   Logger.log(VAULT_BACKUP_KEY, 'Unable to backup vault as it is undefined');
-  return false;
+  const response: KeyRingBackupResponse = {
+    success: false,
+    message: 'Unable to backup vault as it is undefined',
+  };
+  return response;
 };
 
 export const getVaultFromBackup = async () => {
