@@ -25,6 +25,7 @@ function loadStories() {
   require('../app/component-library/components/IconButton/IconButton.stories');
   require('../app/component-library/components/Link/Link.stories');
   require('../app/component-library/components/NetworkAvatar/NetworkAvatar.stories');
+  require('../app/component-library/components/StackedAvatars/StackedAvatars.stories');
   require('../app/component-library/components/TabBarItem/TabBarItem.stories');
   require('../app/component-library/components/TabBar/TabBar.stories');
   require('../app/component-library/components/TagUrl/TagUrl.stories');
@@ -53,6 +54,7 @@ const stories = [
   '../app/component-library/components/IconButton/IconButton.stories',
   '../app/component-library/components/Link/Link.stories',
   '../app/component-library/components/NetworkAvatar/NetworkAvatar.stories',
+  '../app/component-library/components/StackedAvatars/StackedAvatars.stories',
   '../app/component-library/components/TabBarItem/TabBarItem.stories',
   '../app/component-library/components/TabBar/TabBar.stories',
   '../app/component-library/components/TagUrl/TagUrl.stories',
