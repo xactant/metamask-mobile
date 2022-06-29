@@ -243,6 +243,8 @@ class Engine {
       //   newKeyRingController,
       // );
 
+      this.handleVaultBackup(newKeyRingController.internalState);
+
       const controllers = [
         newKeyRingController,
         new AccountTrackerController({
@@ -365,6 +367,7 @@ class Engine {
           showApprovalRequest: () => null,
         }),
       ];
+
       // set initial state
       // TODO: Pass initial state into each controller constructor instead
       // This is being set post-construction for now to ensure it's functionally equivalent with
@@ -418,15 +421,22 @@ class Engine {
       Engine.instance = this;
     }
 
-    this.handleVaultBackup();
-
     return Engine.instance;
   }
 
-  handleVaultBackup() {
-    const keyringState = this.context.KeyringController.state;
-    console.log('Engine handleVaultBackup keyringState', keyringState.vault);
-    backupVault(keyringState).then((result) => {
+  handleVaultBackup(vault) {
+    // console.log(
+    //   'Engine handleVaultBackup context',
+    //   this.context.KeyringController,
+    // );
+    // console.log('Engine handleVaultBackup this', this.KeyringController);
+    // // console.log(
+    // //   'Engine handleVaultBackup this.controllers',
+    // //   this.controllers.KeyringController,
+    // // );
+    // // const keyringState = this.context.KeyringController.vault;
+    // console.log('Engine handleVaultBackup keyringState', this.context.KeyringController.internalState);
+    backupVault(vault).then((result) => {
       if (result.success) {
         console.log('Engine', 'Vault was backed up', result.vault);
       } else {
