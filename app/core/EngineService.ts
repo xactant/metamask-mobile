@@ -82,8 +82,6 @@ class EngineService {
    */
   async initalizeVaultFromBackup(store: any) {
     console.log('EngineService initalizeVaultFromBackup');
-    // const vaultFromBackup = await getVaultFromBackup();
-    // console.log('EngineService vault from backup', vaultFromBackup);
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
     const vault = await getVaultFromBackup();
