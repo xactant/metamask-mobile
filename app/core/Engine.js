@@ -72,10 +72,9 @@ class Engine {
   /**
    * Creates a CoreController instance
    */
-  constructor(initialState = {}, vault) {
+  constructor(initialState = {}, initialKeyringState) {
     if (!Engine.instance) {
-      // console.log('Engine KeyringController', initialState.KeyringController);
-      console.log('Engine vault', vault);
+      console.log('Engine initialKeyringState', initialKeyringState);
       const preferencesController = new PreferencesController(
         {},
         {
@@ -213,8 +212,7 @@ class Engine {
       const additionalKeyrings = [QRHardwareKeyring];
 
       // const keyRingState = vault || initialState.KeyringController;
-      const keyRingState = vault;
-      console.log('Engine keyRingState', keyRingState);
+      const keyRingState = initialKeyringState;
 
       const newKeyRingController = new KeyringController(
         {
@@ -424,7 +422,7 @@ class Engine {
     KeyringController.subscribe((state) =>
       backupVault(state).then((result) => {
         if (result.success) {
-          console.log('Engine', 'Vault was backed up', result.vault);
+          console.log('Engine', 'Vault was backed up', result.state);
         } else {
           console.log('Engine', 'Vault backup failed');
         }
@@ -862,9 +860,8 @@ export default {
   refreshTransactionHistory(forceCheck = false) {
     return instance.refreshTransactionHistory(forceCheck);
   },
-  init(state: {} | undefined, vault = null) {
-    // console.log('Engine init', state, vault);
-    instance = new Engine(state, vault);
+  init(state: {} | undefined, keyringState = null) {
+    instance = new Engine(state, keyringState);
     Object.freeze(instance);
     return instance;
   },
