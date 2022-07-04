@@ -84,11 +84,11 @@ class EngineService {
     console.log('EngineService initalizeVaultFromBackup');
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
-    const vault = await getVaultFromBackup();
+    const keyringState = await getVaultFromBackup();
     const Engine = UntypedEngine as any;
-    if (vault) {
-      console.log('EngineService using vault backup', vault);
-      Engine.init(state, vault);
+    if (keyringState) {
+      console.log('EngineService using keyringState backup', keyringState);
+      Engine.init(state, keyringState);
     } else {
       console.log('EngineService no vault');
       Engine.init(state, undefined);

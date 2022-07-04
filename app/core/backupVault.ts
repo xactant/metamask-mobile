@@ -17,16 +17,16 @@ const options: Options = {
 interface KeyRingBackupResponse {
   success: boolean;
   message: string;
-  vault?: string;
+  state?: KeyringState;
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const backupVault = async (keyRingState: KeyringState) => {
-  if (keyRingState.vault) {
+export const backupVault = async (keyringState: KeyringState) => {
+  if (keyringState.vault) {
     const backupResult = await setInternetCredentials(
       VAULT_BACKUP_KEY,
       VAULT_BACKUP_KEY,
-      keyRingState.vault,
+      keyringState.vault,
       options,
     );
     if (backupResult === false) {
@@ -41,7 +41,10 @@ export const backupVault = async (keyRingState: KeyringState) => {
     const response: KeyRingBackupResponse = {
       success: true,
       message: 'Vault successfully backed up',
-      vault: keyRingState.vault,
+      state: {
+        vault: keyringState.vault,
+        keyrings: keyringState.keyrings,
+      },
     };
     return response;
   }
@@ -57,7 +60,7 @@ export const getVaultFromBackup = async () => {
   Logger.log(VAULT_BACKUP_KEY, 'getVaultFromBackup');
   const credentials = await getInternetCredentials(VAULT_BACKUP_KEY);
   if (credentials) {
-    return credentials.password;
+    return { vault: credentials.password };
   }
   return false;
 };
