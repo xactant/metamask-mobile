@@ -12,9 +12,13 @@ export interface TokenAvatarProps extends BaseAvatarProps {
    * Token image URL.
    */
   tokenImageUrl?: string;
+  /**
+   * Boolean to activate halo effect.
+   */
+  useHalo?: boolean;
 }
 
 export type TokenAvatarStyleSheetVars = Pick<
   TokenAvatarProps,
   'size' | 'style'
->;
+> & { haloColor: string | null };

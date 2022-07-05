@@ -16,7 +16,10 @@ const styleSheet = (params: {
   vars: TokenAvatarStyleSheetVars;
 }) => {
   const { vars, theme } = params;
-  const { size, style } = vars;
+  const { size, style, haloColor } = vars;
+
+  const setupHalo = haloColor ?? '';
+
   const baseStyle = {
     backgroundColor: theme.colors.background.alternative,
     justifyContent: 'center',

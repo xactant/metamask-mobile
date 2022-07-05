@@ -12,9 +12,18 @@ const TokenAvatar = ({
   style,
   tokenName,
   tokenImageUrl,
+  useHalo,
 }: TokenAvatarProps) => {
   const [showPlaceholder, setShowPlaceholder] = useState(!tokenImageUrl);
-  const { styles } = useStyles(stylesheet, { style, size, showPlaceholder });
+  const haloColor = useHalo ? '#ffffff20' : null;
+
+  const { styles } = useStyles(stylesheet, {
+    style,
+    size,
+    showPlaceholder,
+    haloColor,
+  });
+
   const textVariant =
     size === BaseAvatarSize.Sm || size === BaseAvatarSize.Xs
       ? BaseTextVariant.lBodySM
@@ -23,8 +32,26 @@ const TokenAvatar = ({
 
   const onError = () => setShowPlaceholder(true);
 
+  const avatarSize = (() => {
+    if (!useHalo) return size;
+
+    switch (size) {
+      case BaseAvatarSize.Xs:
+      case BaseAvatarSize.Sm:
+        return BaseAvatarSize.Xs;
+      case BaseAvatarSize.Md:
+        return BaseAvatarSize.Sm;
+      case BaseAvatarSize.Lg:
+        return BaseAvatarSize.Md;
+      case BaseAvatarSize.Xl:
+        return BaseAvatarSize.Lg;
+      default:
+        return size;
+    }
+  })();
+
   return (
-    <BaseAvatar size={size} style={styles.base}>
+    <BaseAvatar size={avatarSize} style={styles.base}>
       {showPlaceholder ? (
         <BaseText style={styles.label} variant={textVariant}>
           {chainNameFirstLetter}
