@@ -1,9 +1,9 @@
 import { KeyringState } from '@metamask/controllers';
 import Logger from '../util/Logger';
-// import SecureKeychain from './SecureKeychain';
 import {
   getInternetCredentials,
   setInternetCredentials,
+  resetInternetCredentials,
   Options,
   ACCESSIBLE,
 } from 'react-native-keychain';
@@ -20,7 +20,6 @@ interface KeyRingBackupResponse {
   state?: KeyringState;
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const backupVault = async (keyringState: KeyringState) => {
   if (keyringState.vault) {
     const backupResult = await setInternetCredentials(
@@ -63,4 +62,9 @@ export const getVaultFromBackup = async () => {
     return { vault: credentials.password };
   }
   return false;
+};
+
+export const resetVaultBackup = async () => {
+  Logger.log(VAULT_BACKUP_KEY, 'resetting vault backup');
+  await resetInternetCredentials(VAULT_BACKUP_KEY);
 };

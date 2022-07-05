@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Engine from '../../core/Engine';
 import Logger from '../../util/Logger';
 import { EXISTING_USER } from '../../constants/storage';
+import { resetVaultBackup } from '../../core/backupVault';
 
 const useDeleteWallet = () => {
   const { KeyringController } = Engine.context as any;
@@ -11,6 +12,7 @@ const useDeleteWallet = () => {
       await Engine.resetState();
       await KeyringController.createNewVaultAndKeychain(`${Date.now()}`);
       await KeyringController.setLocked();
+      await resetVaultBackup();
     } catch (error: any) {
       const errorMsg = `Failed to createNewVaultAndKeychain: ${error}`;
       Logger.log(error, errorMsg);
