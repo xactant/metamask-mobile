@@ -29,6 +29,8 @@ const Routes = {
   VAULT_RECOVERY: {
     ID: 'VaultRecovery',
     RESTORE_WALLET: 'RestoreWallet',
+    WALLET_RESTORED: 'WalletRestored',
+    WALLET_RESET_NEEDED: 'WalletResetNeeded',
   },
 };
 

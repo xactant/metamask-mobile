@@ -46,6 +46,7 @@ const MigratedStorage = {
     } catch (error) {
       Logger.error(error, { message: 'Failed to set item' });
     }
+    // throw new Error('Failed async storage storage fetch.');
   },
   async removeItem(key) {
     try {
@@ -117,8 +118,8 @@ const persistConfig = {
   migrate: createMigrate(migrations, { debug: false }),
   timeout: TIMEOUT,
   writeFailHandler: async (error) => {
+    console.log('writeFailHandler');
     Logger.error(error, { message: 'Error persisting data' }); // Log error if saving state fails
-    // EngineService.initalizeVaultFromBackup();
   },
 };
 
@@ -131,8 +132,7 @@ export const store = createStore(pReducer);
  */
 const onPersistComplete = () => {
   console.log('onPersistComplete');
-  EngineService.initalizeVaultFromBackup(store);
-  // EngineService.initalizeEngine(store);
+  EngineService.initalizeEngine(store);
 };
 
 export const persistor = persistStore(store, null, onPersistComplete);

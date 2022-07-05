@@ -49,6 +49,7 @@ import {
   LOGIN_PASSWORD_ERROR,
   RESET_WALLET_ID,
 } from '../../../constants/test-ids';
+import { createRestoreWalletNavDetails } from '../RestoreWallet';
 
 const deviceHeight = Device.getDeviceHeight();
 const breakPoint = deviceHeight < 700;
@@ -411,6 +412,9 @@ class Login extends PureComponent {
           loading: false,
           error: strings('login.clean_vault_error'),
         });
+        // navigate to recovery flow
+        const { navigation } = this.props;
+        navigation.navigate(...createRestoreWalletNavDetails());
       } else {
         this.setState({ loading: false, error });
       }

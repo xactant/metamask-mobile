@@ -10,20 +10,19 @@ import BaseText, {
 import StyledButton from '../../UI/StyledButton';
 import { createNavigationDetails } from '../../../util/navigation/navUtils';
 import Routes from '../../../constants/navigation/Routes';
-import EngineService from '../../../core/EngineService';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
 
 export const createRestoreWalletNavDetails = createNavigationDetails(
-  Routes.VAULT_RECOVERY.RESTORE_WALLET,
+  Routes.VAULT_RECOVERY.WALLET_RESTORED,
 );
 
 const RestoreWallet = () => {
   const { colors } = useAppThemeFromContext();
   const styles = createStyles(colors);
-  const handleOnNext = useCallback(async () => {
-    await EngineService.initializeVaultFromBackup({});
+  const handleOnNext = useCallback(() => {
+    console.log('Vault recovery');
   }, []);
 
   return (

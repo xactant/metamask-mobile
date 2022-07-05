@@ -4,6 +4,11 @@ import { getVaultFromBackup } from '../core/backupVault';
 const UPDATE_BG_STATE_KEY = 'UPDATE_BG_STATE';
 const INIT_BG_STATE_KEY = 'INIT_BG_STATE';
 
+interface InitializeEngineResult {
+  result: boolean;
+  error?: string;
+}
+
 class EngineService {
   private engineInitialized = false;
 
@@ -80,7 +85,7 @@ class EngineService {
    *
    * @param store - Redux store
    */
-  async initalizeVaultFromBackup(store: any) {
+  async initializeVaultFromBackup(store: any): Promise<InitializeEngineResult> {
     console.log('EngineService initalizeVaultFromBackup');
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
@@ -89,12 +94,16 @@ class EngineService {
     if (keyringState) {
       console.log('EngineService using keyringState backup', keyringState);
       Engine.init(state, keyringState);
-    } else {
-      console.log('EngineService no vault');
-      Engine.init(state, undefined);
+      this.updateControllers(store, Engine);
+      return {
+        result: true,
+      };
     }
-
-    this.updateControllers(store, Engine);
+    console.log('EngineService no vault');
+    return {
+      result: false,
+      error: 'No vault in backup',
+    };
   }
 }
 
