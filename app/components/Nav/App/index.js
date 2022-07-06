@@ -44,6 +44,7 @@ import { mockTheme, useAppThemeFromContext } from '../../../util/theme';
 import Device from '../../../util/device';
 import { colors as importedColors } from '../../../styles/common';
 import Routes from '../../../constants/navigation/Routes';
+import { TurnOffRememberMeModal } from '../../../components/UI/TurnOffRememberMeModal';
 
 const Stack = createStackNavigator();
 /**
@@ -336,6 +337,10 @@ const App = ({ userLoggedIn }) => {
         component={DeleteWalletModal}
       />
       <Stack.Screen name={Routes.MODAL.WHATS_NEW} component={WhatsNewModal} />
+      <Stack.Screen
+        name={Routes.MODAL.TURN_OFF_REMEMBER_ME}
+        component={TurnOffRememberMeModal}
+      />
     </Stack.Navigator>
   );
 
