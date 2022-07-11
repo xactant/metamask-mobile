@@ -24,6 +24,7 @@ const WalletRestored = () => {
   const dispatch = useDispatch();
   const styles = createStyles();
   const handleOnNext = useCallback(async () => {
+    console.log('WalletRestored login');
     dispatch(logIn());
   }, [dispatch]);
 
