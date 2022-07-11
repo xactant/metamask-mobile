@@ -86,20 +86,17 @@ class EngineService {
    * @param store - Redux store
    */
   async initializeVaultFromBackup(store: any): Promise<InitializeEngineResult> {
-    console.log('EngineService initalizeVaultFromBackup');
     const reduxState = store.getState?.();
     const state = reduxState?.engine?.backgroundState || {};
     const keyringState = await getVaultFromBackup();
     const Engine = UntypedEngine as any;
     if (keyringState) {
-      console.log('EngineService using keyringState backup', keyringState);
       Engine.init(state, keyringState);
       this.updateControllers(store, Engine);
       return {
         result: true,
       };
     }
-    console.log('EngineService no vault');
     return {
       result: false,
       error: 'No vault in backup',

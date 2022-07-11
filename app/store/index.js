@@ -118,7 +118,6 @@ const persistConfig = {
   migrate: createMigrate(migrations, { debug: false }),
   timeout: TIMEOUT,
   writeFailHandler: async (error) => {
-    console.log('writeFailHandler');
     Logger.error(error, { message: 'Error persisting data' }); // Log error if saving state fails
   },
 };
@@ -131,7 +130,6 @@ export const store = createStore(pReducer);
  * Initialize services after persist is completed
  */
 const onPersistComplete = () => {
-  console.log('onPersistComplete');
   EngineService.initalizeEngine(store);
 };
 

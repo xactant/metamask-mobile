@@ -1,8 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../../util/theme/models';
 
-export const createStyles = (colors: Colors) =>
+export const createStyles = () =>
   StyleSheet.create({
     screen: {
       flex: 1,

@@ -1,7 +1,6 @@
 /* eslint-disable import/no-commonjs */
-import { useAppThemeFromContext } from '../../../util/theme';
-import React, { useCallback } from 'react';
-import { View, Image } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, Image, ActivityIndicator } from 'react-native';
 import { strings } from '../../../../locales/i18n';
 import { createStyles } from './styles';
 import BaseText, {
@@ -10,34 +9,43 @@ import BaseText, {
 import StyledButton from '../../UI/StyledButton';
 import { createNavigationDetails } from '../../../util/navigation/navUtils';
 import Routes from '../../../constants/navigation/Routes';
+import EngineService from '../../../core/EngineService';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
 
-export const createRestoreWalletNavDetails = createNavigationDetails(
+export const createWalletRestoredNavDetails = createNavigationDetails(
   Routes.VAULT_RECOVERY.WALLET_RESTORED,
 );
 
-const RestoreWallet = () => {
-  const { colors } = useAppThemeFromContext();
-  const styles = createStyles(colors);
-  const handleOnNext = useCallback(() => {
-    console.log('Vault recovery');
+const WalletRestored = () => {
+  const styles = createStyles();
+  const [loading, setLoading] = useState<boolean>(false);
+  const handleOnNext = useCallback(async () => {
+    setLoading(true);
+    await EngineService.initializeVaultFromBackup({});
   }, []);
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <View style={styles.content}>
         <View style={styles.images}>
           <Image source={onboardingDeviceImage} />
           <BaseText variant={BaseTextVariant.lHeadingLG}>
-            {strings('vault_recovery.restore_needed_title')}
+            {strings('wallet_restored.wallet_restored_title')}
           </BaseText>
           <BaseText
             variant={BaseTextVariant.sBodyMD}
             style={styles.description}
           >
-            {strings('vault_recovery.restore_needed_description')}
+            {strings('wallet_restored.wallet_restored_description')}
+          </BaseText>
+          <BaseText
+            variant={BaseTextVariant.sBodyMD}
+            style={styles.description}
+          >
+            {strings('wallet_restored.wallet_restored_manual_backup')}
           </BaseText>
         </View>
       </View>
@@ -47,11 +55,15 @@ const RestoreWallet = () => {
           containerStyle={styles.actionButton}
           onPress={handleOnNext}
         >
-          {strings('vault_recovery.restore_needed_action')}
+          {loading ? (
+            <ActivityIndicator size="small" color={colors.primary.inverse} />
+          ) : (
+            strings('wallet_restored.wallet_restored_action')
+          )}
         </StyledButton>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default React.memo(RestoreWallet);
+export default React.memo(WalletRestored);

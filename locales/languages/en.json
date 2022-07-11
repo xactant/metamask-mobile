@@ -2138,7 +2138,7 @@
     "error": "Failed to download attachment.",
     "unknownError": "Unknown error occurred"
   },
-  "vault_recovery": {
+  "restore_wallet": {
     "restore_needed_title": "Restore needed",
     "restore_needed_description": "Something has gone wrong but don’t worry! Let’s try to restore your wallet.",
     "restore_needed_action": "Restore wallet"

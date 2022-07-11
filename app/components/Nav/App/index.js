@@ -45,6 +45,7 @@ import Device from '../../../util/device';
 import { colors as importedColors } from '../../../styles/common';
 import Routes from '../../../constants/navigation/Routes';
 import { RestoreWallet } from '../../Views/RestoreWallet';
+import WalletRestored from '../../Views/RestoreWallet/WalletRestored';
 
 const Stack = createStackNavigator();
 /**
@@ -144,12 +145,15 @@ const OnboardingRootNav = () => (
 const VaultRecoveryFlow = () => (
   <Stack.Navigator
     initialRouteName={Routes.VAULT_RECOVERY.RESTORE_WALLET}
-    mode="modal"
     screenOptions={{ headerShown: false }}
   >
     <Stack.Screen
       name={Routes.VAULT_RECOVERY.RESTORE_WALLET}
       component={RestoreWallet}
+    />
+    <Stack.Screen
+      name={Routes.VAULT_RECOVERY.WALLET_RESTORED}
+      component={WalletRestored}
     />
   </Stack.Navigator>
 );
