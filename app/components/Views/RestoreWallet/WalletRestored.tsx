@@ -11,6 +11,7 @@ import { createNavigationDetails } from '../../../util/navigation/navUtils';
 import Routes from '../../../constants/navigation/Routes';
 import EngineService from '../../../core/EngineService';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAppThemeFromContext } from '../../../util/theme';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
@@ -21,6 +22,9 @@ export const createWalletRestoredNavDetails = createNavigationDetails(
 
 const WalletRestored = () => {
   const styles = createStyles();
+  const { colors } = useAppThemeFromContext();
+
+
   const [loading, setLoading] = useState<boolean>(false);
   const handleOnNext = useCallback(async () => {
     setLoading(true);

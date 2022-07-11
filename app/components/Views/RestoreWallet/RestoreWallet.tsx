@@ -13,6 +13,7 @@ import EngineService from '../../../core/EngineService';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { createWalletRestoredNavDetails } from './WalletRestored';
+import { useAppThemeFromContext } from '../../../util/theme';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
@@ -23,6 +24,8 @@ export const createRestoreWalletNavDetails = createNavigationDetails(
 
 const RestoreWallet = () => {
   const styles = createStyles();
+
+  const { colors } = useAppThemeFromContext();
   const [loading, setLoading] = useState<boolean>(false);
 
   const { navigate } = useNavigation();
