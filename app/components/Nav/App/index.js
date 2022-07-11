@@ -46,6 +46,7 @@ import { colors as importedColors } from '../../../styles/common';
 import Routes from '../../../constants/navigation/Routes';
 import { RestoreWallet } from '../../Views/RestoreWallet';
 import WalletRestored from '../../Views/RestoreWallet/WalletRestored';
+import WalletResetNeeded from '../../Views/RestoreWallet/WalletResetNeeded';
 
 const Stack = createStackNavigator();
 /**
@@ -154,6 +155,10 @@ const VaultRecoveryFlow = () => (
     <Stack.Screen
       name={Routes.VAULT_RECOVERY.WALLET_RESTORED}
       component={WalletRestored}
+    />
+    <Stack.Screen
+      name={Routes.VAULT_RECOVERY.WALLET_RESET_NEEDED}
+      component={WalletResetNeeded}
     />
   </Stack.Navigator>
 );

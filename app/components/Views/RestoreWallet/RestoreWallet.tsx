@@ -14,6 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { createWalletRestoredNavDetails } from './WalletRestored';
 import { useAppThemeFromContext } from '../../../util/theme';
+import { createWalletResetNeededNavDetails } from './WalletResetNeeded';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
@@ -32,8 +33,13 @@ const RestoreWallet = () => {
 
   const handleOnNext = useCallback(async () => {
     setLoading(true);
-    await EngineService.initializeVaultFromBackup({});
-    navigate(...createWalletRestoredNavDetails());
+    const restoreResult = await EngineService.initializeVaultFromBackup();
+    if (restoreResult.success) {
+      navigate(...createWalletRestoredNavDetails());
+    } else {
+      console.log('RestoreWallet', 'error with restore', restoreResult);
+      navigate(...createWalletResetNeededNavDetails());
+    }
   }, [navigate]);
 
   return (

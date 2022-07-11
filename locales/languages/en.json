@@ -2151,6 +2151,8 @@
   },
   "wallet_reset_needed": {
     "wallet_reset_needed_title": "Wallet reset needed",
+    "wallet_reset_needed_reset_action": "Reset wallet using SRP",
+    "wallet_reset_needed_create_new_wallet_action": "Reset wallet using SRP",
     "wallet_reset_needed_caption": "Something has gone wrong and you’ll need to reset your wallet.",
     "wallet_reset_needed_description": "This will remove all wallet related data from your device and will initiate an import wallet flow. Your accounts exist on the blockchain and are not related to MetaMask. You can always recover your accounts using your Secret Recovery Phrase. Now, grab your Secret Recovery Phrase to reset your wallet."
   }
