@@ -27,7 +27,7 @@ const Routes = {
     NAV: 'OnboardingNav',
   },
   VAULT_RECOVERY: {
-    ID: 'VaultRecovery',
+    ID: 'RestoreWallet',
     RESTORE_WALLET: 'RestoreWallet',
     WALLET_RESTORED: 'WalletRestored',
     WALLET_RESET_NEEDED: 'WalletResetNeeded',

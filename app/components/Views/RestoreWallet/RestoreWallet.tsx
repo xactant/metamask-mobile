@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import { createWalletRestoredNavDetails } from './WalletRestored';
 import { useAppThemeFromContext } from '../../../util/theme';
 import { createWalletResetNeededNavDetails } from './WalletResetNeeded';
+import Logger from '../../..//util/Logger';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
@@ -37,7 +38,7 @@ const RestoreWallet = () => {
     if (restoreResult.success) {
       navigate(...createWalletRestoredNavDetails());
     } else {
-      console.log('RestoreWallet', 'error with restore', restoreResult);
+      Logger.log('RestoreWallet', 'error with restore', restoreResult);
       navigate(...createWalletResetNeededNavDetails());
     }
   }, [navigate]);

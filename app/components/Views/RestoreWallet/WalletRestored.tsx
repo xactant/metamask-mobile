@@ -1,6 +1,6 @@
 /* eslint-disable import/no-commonjs */
-import React, { useCallback, useState } from 'react';
-import { View, Image, ActivityIndicator } from 'react-native';
+import React, { useCallback } from 'react';
+import { View, Image } from 'react-native';
 import { strings } from '../../../../locales/i18n';
 import { createStyles } from './styles';
 import BaseText, {
@@ -9,9 +9,9 @@ import BaseText, {
 import StyledButton from '../../UI/StyledButton';
 import { createNavigationDetails } from '../../../util/navigation/navUtils';
 import Routes from '../../../constants/navigation/Routes';
-import EngineService from '../../../core/EngineService';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useAppThemeFromContext } from '../../../util/theme';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../../../actions/user';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
@@ -21,13 +21,11 @@ export const createWalletRestoredNavDetails = createNavigationDetails(
 );
 
 const WalletRestored = () => {
+  const dispatch = useDispatch();
   const styles = createStyles();
-  const { colors } = useAppThemeFromContext();
-  const [loading, setLoading] = useState<boolean>(false);
   const handleOnNext = useCallback(async () => {
-    setLoading(true);
-    await EngineService.initializeVaultFromBackup({});
-  }, []);
+    dispatch(logIn());
+  }, [dispatch]);
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -57,11 +55,7 @@ const WalletRestored = () => {
           containerStyle={styles.actionButton}
           onPress={handleOnNext}
         >
-          {loading ? (
-            <ActivityIndicator size="small" color={colors.primary.inverse} />
-          ) : (
-            strings('wallet_restored.wallet_restored_action')
-          )}
+          {strings('wallet_restored.wallet_restored_action')}
         </StyledButton>
       </View>
     </SafeAreaView>

@@ -75,6 +75,7 @@ import {
   networkSwitched,
 } from '../../../actions/onboardNetwork';
 import Routes from '../../../constants/navigation/Routes';
+import { createRestoreWalletNavDetails } from '../../Views/RestoreWallet/RestoreWallet.tsx';
 
 const createStyles = (colors) =>
   StyleSheet.create({
@@ -737,8 +738,9 @@ class DrawerView extends PureComponent {
   };
 
   logOut = () => {
-    this.props.navigation.navigate(Routes.ONBOARDING.LOGIN);
-    this.props.logOut();
+    // this.props.navigation.navigate(Routes.ONBOARDING.LOGIN);
+    // this.props.logOut();
+    this.props.navigation.navigate(...createRestoreWalletNavDetails());
   };
 
   onPress = async () => {
