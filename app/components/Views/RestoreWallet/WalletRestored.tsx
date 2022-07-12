@@ -30,7 +30,7 @@ const WalletRestored = () => {
     console.log('WalletRestored login');
     dispatch(logIn());
     navigation.replace('HomeNav');
-  }, [dispatch]);
+  }, [dispatch, navigation]);
 
   return (
     <SafeAreaView style={styles.screen}>
