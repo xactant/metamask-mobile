@@ -88,9 +88,11 @@ class EngineService {
    */
   async initializeVaultFromBackup(): Promise<InitializeEngineResult> {
     const keyringState = await getVaultFromBackup();
+    const reduxState = importedStore.getState?.();
+    const state = reduxState?.engine?.backgroundState || {};
     const Engine = UntypedEngine as any;
     if (keyringState) {
-      const instance = Engine.init({ backgroundState: {} }, keyringState);
+      const instance = Engine.init(state, keyringState);
       if (instance) {
         this.updateControllers(importedStore, Engine);
         return {
