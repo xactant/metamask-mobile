@@ -123,7 +123,7 @@
     "@react-native-community/checkbox": "^0.5.12",
     "@react-native-community/cookies": "^5.0.1",
     "@react-native-community/netinfo": "6.0.0",
-    "@react-native-community/viewpager": "3.3.1",
+    "@react-native-community/viewpager": "5.0.11",
     "@react-native-masked-view/masked-view": "^0.2.6",
     "@react-native-picker/picker": "^2.2.1",
     "@react-navigation/bottom-tabs": "^5.11.11",
