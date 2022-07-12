@@ -130,6 +130,7 @@ export const store = createStore(pReducer);
  * Initialize services after persist is completed
  */
 const onPersistComplete = () => {
+  console.log('onPersistComplete');
   EngineService.initalizeEngine(store);
 };
 

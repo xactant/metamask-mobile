@@ -12,6 +12,7 @@ import Routes from '../../../constants/navigation/Routes';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../actions/user';
+import { useNavigation } from '@react-navigation/native';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const onboardingDeviceImage = require('../../../images/swaps_onboard_device.png');
@@ -23,9 +24,12 @@ export const createWalletRestoredNavDetails = createNavigationDetails(
 const WalletRestored = () => {
   const dispatch = useDispatch();
   const styles = createStyles();
+  const navigation = useNavigation();
+  // const userLoggedIn = useSelector()
   const handleOnNext = useCallback(async () => {
     console.log('WalletRestored login');
     dispatch(logIn());
+    navigation.replace('HomeNav');
   }, [dispatch]);
 
   return (

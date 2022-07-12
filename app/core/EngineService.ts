@@ -1,6 +1,6 @@
 import UntypedEngine from './Engine';
 import { getVaultFromBackup } from '../core/backupVault';
-import { store as importedStore} from '../store';
+import { store as importedStore } from '../store';
 
 const UPDATE_BG_STATE_KEY = 'UPDATE_BG_STATE';
 const INIT_BG_STATE_KEY = 'INIT_BG_STATE';
@@ -90,7 +90,7 @@ class EngineService {
     const keyringState = await getVaultFromBackup();
     const Engine = UntypedEngine as any;
     if (keyringState) {
-      const instance = Engine.init(importedStore, keyringState);
+      const instance = Engine.init({ backgroundState: {} }, keyringState);
       if (instance) {
         this.updateControllers(importedStore, Engine);
         return {
