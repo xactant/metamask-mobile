@@ -147,7 +147,9 @@
     "wrong_password_error": "Ошибка: не удалось расшифровать",
     "wrong_password_error_android": "Ошибка: ошибка: 1e000065:Функции шифрования: OPENSSL_internal: BAD_DECRYPT",
     "vault_error": "Ошибка: невозможно разблокировать без предыдущего хранилища.",
-    "clean_vault_error": "В MetaMask возникла ошибка из-за достижения предела хранилища. Локальные данные повреждены. Переустановите MetaMask и выполните восстановление с помощью секретной фразы для восстановления."
+    "clean_vault_error": "В MetaMask возникла ошибка из-за достижения предела хранилища. Локальные данные повреждены. Переустановите MetaMask и выполните восстановление с помощью секретной фразы для восстановления.",
+    "security_alert_title": "Security Alert",
+    "security_alert_desc": "In order to proceed, you need to turn Passcode on or any biometrics authentication method supported in your device (FaceID, TouchID or Fingerprint)"
   },
   "enter_password": {
     "title": "Введите пароль",
@@ -282,6 +284,23 @@
     "no_collectibles": "Не видите свои NFT?",
     "no_available_tokens": "Не видите свой токен?",
     "add_tokens": "Импорт токенов",
+    "tokens_detected_in_account": "{{tokenCount}} new {{tokensLabel}} found in this account",
+    "token_toast": {
+      "tokens_imported_title": "Imported Tokens",
+      "tokens_imported_desc": "Successfully imported {{tokenSymbols}}",
+      "token_imported_title": "Imported Token",
+      "token_imported_desc": "Successfully imported {{tokenSymbol}}",
+      "tokens_hidden_title": "Hiding Tokens",
+      "tokens_hidden_desc": "Hiding detected tokens from your wallet",
+      "token_hidden_title": "Hiding Token",
+      "token_hidden_desc": "Hiding {{tokenSymbol}}"
+    },
+    "hide_token": {
+      "title": "Hide Token?",
+      "desc": "You can add this token back in the future by going to “Import token” and searching for the token.",
+      "cancel_cta": "Cancel",
+      "confirm_cta": "Confirm"
+    },
     "no_tokens": "У вас нет токенов!",
     "no_nfts_yet": "Пока нет NFT",
     "nfts_autodetection_title": "Обнаружение NFT",
@@ -294,14 +313,14 @@
     "deposit_button": "Внести",
     "copy_address": "Копировать",
     "collectible_action_title": "Варианты коллекционных активов",
+    "remove_token_title": "Do you want to hide this token?",
     "remove_collectible_title": "Хотите удалить этот коллекционный актив?",
     "refresh_metadata": "Обновить метаданные",
     "token_removal_issue_title": "Проблема с удалением токена.",
     "token_removal_issue_desc": "Проблема при попытке удалить токен. Попробуйте снова.",
-    "token_removed_title": "Токен удален!",
-    "token_removed_desc": "Если передумаете, вы можете добавить его обратно, нажав «Импорт токенов»",
     "collectible_removed_title": "Коллекционный актив удален!",
     "collectible_removed_desc": "Если вы передумаете, вы можете добавить его обратно, нажав «Импорт NFT».",
+    "remove": "Hide",
     "cancel": "Отмена",
     "yes": "Да",
     "private_key_detected": "Обнаружен закрытый ключ",
@@ -310,6 +329,19 @@
     "logout_to_import_seed": "Для импорта секретной фразы для восстановления вам сначала нужно выйти из системы.",
     "ready_to_explore": "Готовы приступить к изучению приложений блокчейна?",
     "unable_to_load": "Не удалось загрузить баланс"
+  },
+  "asset_details": {
+    "token": "Token",
+    "amount": "Token Amount",
+    "address": "Token contract address",
+    "decimal": "Token decimal",
+    "network": "Network",
+    "lists": "Token Lists",
+    "hide_cta": "Hide token",
+    "options": {
+      "view_on_block": "View on block explorer",
+      "token_details": "Token details"
+    }
   },
   "activity_view": {
     "title": "Активность"
@@ -330,11 +362,15 @@
       "cancel_add_collectible": "ОТМЕНА",
       "add_collectible": "ИМПОРТ"
     },
-    "warning_body_description": "Кто угодно может создать токен, в том числе поддельные версии существующих токенов. Узнайте подробнее о",
-    "warning_link": "мошенничестве и угрозах безопасности.",
-    "security_tips": "Советы по безопасности",
-    "token_detection_feature": "Новинка! Улучшенное обнаружение токенов доступно в основной сети Ethereum в качестве экспериментальной функции.",
-    "token_detection_link": "Включите его в Настройках."
+    "banners": {
+      "search_desc": "Improved token detection is currently available on {{network}} network. ",
+      "search_link": "Enable it from Settings.",
+      "custom_warning_desc": "Anyone can create a token, including creating fake versions of existing tokens. Learn more about ",
+      "custom_warning_link": "scams and security risks.",
+      "custom_info_desc": "Token detection is not available on this network yet. Please import token manually and make sure you trust it. Learn about ",
+      "custom_info_link": "token scams and security risks.",
+      "custom_security_tips": "Security Tips"
+    }
   },
   "terms_and_conditions": {
     "title": "Положения и условия",
@@ -347,7 +383,7 @@
     "here": "здесь",
     "agree": "Я согласен(-на)",
     "decline": "Нет, спасибо",
-    "description_title": "Помогите нам улучшить MetaMask",
+    "description_title": "Помогите нам улучшить Metamask",
     "description_content_1": "MetaMask хотел бы собрать основные данные об использовании, чтобы лучше понять, как наши пользователи взаимодействуют с мобильным приложением. Эти данные будут использоваться для постоянного улучшения удобства использования и взаимодействия с пользователем нашего продукта.",
     "description_content_2": "MetaMask...",
     "action_description_1": "всегда позволяет вам запретить сбор данных в Настройках;",
@@ -360,6 +396,7 @@
   "token": {
     "token_symbol": "Символ токена",
     "token_address": "Адрес токена",
+    "token_decimal": "Token decimal",
     "search_tokens_placeholder": "Поиск токенов",
     "address_cant_be_empty": "Адрес токена не может быть пустым.",
     "address_must_be_valid": "Адрес токена должен быть действительным адресом.",
@@ -438,6 +475,7 @@
     "search_engine": "Поисковая система",
     "new_RPC_URL": "Новая сеть RPC",
     "state_logs": "Журналы состояния",
+    "add_network_title": "Добавить сеть",
     "auto_lock": "Автоблокировка",
     "auto_lock_desc": "Выберите временной интервал до автоблокировки приложения.",
     "state_logs_desc": "Это поможет MetaMask отладить любую проблему, с которой вы можете столкнуться. Отправьте его в службу поддержки MetaMask через значок «гамбургер» > Отправьте отзыв или ответьте на свой существующий запрос о поддержке, если он у вас есть.",
@@ -575,7 +613,31 @@
     "theme_os": "Система",
     "theme_light": "Светлая",
     "theme_dark": "Темная",
-    "network_exists": "Сеть уже добавлена."
+    "mainnet": "Сеть Mainnet",
+    "test_network_name": "Тестовые сети",
+    "custom_network_name": "Пользовательские сети",
+    "popular": "Популярное",
+    "delete": "Удалить",
+    "network_exists": "Сеть уже добавлена.",
+    "delete_metrics_title": "Удалить данные MetaMetrics",
+    "delete_metrics_description_part_one": "Это приведет к удалению исторических данных MetaMetrics, связанных с вашим кошельком.",
+    "delete_metrics_description_part_two": "Данные MetaMetrics — это анонимизированные данные об использовании и диагностике.",
+    "delete_metrics_description_part_three": "Ваш кошелек и счета останутся точно такими, какие они есть сейчас, после того, как эти данные будут удалены. Этот процесс может занять до 60 дней. Посмотреть",
+    "delete_metrics_description_part_four": "Вы инициировали это действие",
+    "delete_metrics_description_part_five": ". Этот процесс может занять до 60 дней. Посмотрите",
+    "consensys_privacy_policy": "Политика конфиденциальности ConsenSys.",
+    "delete_metrics_button": "Удалить данные MetaMetrics",
+    "check_status_button": "Проверить статус",
+    "delete_metrics_confirm_modal_title": "Удалить данные MetaMetrics?",
+    "delete_metrics_confirm_modal_description": "Мы собираемся удалить всю все данные MetaMetrics. Вы уверены?",
+    "delete_wallet_data_title": "Удалить кошелек",
+    "delete_wallet_data_description": "Это удалит все данные, связанные с кошельком, с вашего устройства. Ваши счета существуют в блокчейне и не связаны с MetaMask. Вы всегда можете восстановить свои счета, используя секретную фразу для восстановления.",
+    "delete_wallet_data_button": "Удалить кошелек",
+    "delete_data_status_title": "Статус задачи удаления",
+    "delete_data_status_description": "Текущий статус —",
+    "delete_metrics_error_title": "Мы не можем удалить эти данные прямо сейчас.",
+    "delete_metrics_error_description": "Этот запрос нельзя выполнить сейчас из-за проблемы с сервером аналитической системы. Повторите попытку позже.",
+    "ok": "ОК"
   },
   "app_information": {
     "title": "Информация",
@@ -628,6 +690,8 @@
     "seed_phrase_copied_time": "(хранится 1 минуту)",
     "private_key_copied": "Закрытый ключ временно скопирован в буфер обмена",
     "private_key_copied_time": "(хранится 1 минуту)",
+    "private_key_copied_ios": "Закрытый ключ временно скопирован в буфер обмена\n",
+    "private_key_copied_android": "Закрытый ключ скопирован в буфер обмена\n",
     "warning_incorrect_password": "Неверный пароль",
     "unknown_error": "Не удалось разблокировать ваш счет. Повторите попытку.",
     "hardware_error": "Это счет аппаратного кошелька, вы не можете экспортировать свой закрытый ключ.",
@@ -659,7 +723,8 @@
     "were_unable": "Мы не можем загрузить данные о вашем",
     "balance": "балансе. См. статью поддержки",
     "troubleshooting_missing": "«Устранение неполадок с отсутствующим балансом»",
-    "for_help": "для получения помощи."
+    "for_help": "для получения помощи.",
+    "troubleshoot": "Troubleshoot"
   },
   "account_details": {
     "title": "Реквизиты счета",
@@ -668,6 +733,22 @@
     "show_private_key": "Показать закрытый ключ",
     "account_copied_to_clipboard": "Публичный адрес скопирован в буфер обмена",
     "share_public_key": "Отправка моего открытого ключа:"
+  },
+  "detected_tokens": {
+    "title": "{{tokenCount}} new token found",
+    "title_plural": "{{tokenCount}} new tokens found",
+    "import_cta": "Import ({{tokenCount}})",
+    "hide_cta": "Hide All",
+    "token_address": "Token address: ",
+    "token_lists": "Token lists: {{listNames}}",
+    "token_more": " + {{remainingListCount}} more",
+    "confirm": {
+      "title": "Import selected tokens?",
+      "desc": "Only the tokens you've selected will appear in your wallet. You can always import hidden tokens later by searching for them.",
+      "cancel_cta": "Cancel",
+      "confirm_cta": "Confirm"
+    },
+    "address_copied_to_clipboard": "Token address copied to clipboard"
   },
   "qr_scanner": {
     "invalid_qr_code_title": "Неверный QR-код",
@@ -679,7 +760,9 @@
     "cancel": "Отмена",
     "error": "Ошибка",
     "attempting_to_scan_with_wallet_locked": "Похоже, вы пытаетесь отсканировать QR-код. Вам нужно разблокировать свой кошелек, чтобы использовать его.",
-    "attempting_sync_from_wallet_error": "Похоже, вы пытаетесь выполнить синхронизацию с расширением. Для этого вам нужно удалить текущий кошелек. \n\nПосле того как вы удалите или переустановите новую версию приложения, выберите параметр «Синхронизировать с расширением MetaMask». Важно! Прежде чем удалять кошелек, обязательно сделайте резервную копию секретной фразы для восстановления."
+    "attempting_sync_from_wallet_error": "Похоже, вы пытаетесь выполнить синхронизацию с расширением. Для этого вам нужно удалить текущий кошелек. \n\nПосле того как вы удалите или переустановите новую версию приложения, выберите параметр «Синхронизировать с расширением MetaMask». Важно! Прежде чем удалять кошелек, обязательно сделайте резервную копию секретной фразы для восстановления.",
+    "not_allowed_error_title": "Предоставить доступ к камере",
+    "not_allowed_error_desc": "Доступ к камере необходим для сканирования QR-кода, связанного с адресом счета или конракта"
   },
   "action_view": {
     "cancel": "Отмена",
@@ -720,6 +803,8 @@
     "insufficient": "Недостаточно средств",
     "insufficient_amount": "Вам нужно еще {{amount}} {{tokenSymbol}} для выполнения этой транзакции.",
     "buy_more_eth": "Купите больше ETH",
+    "buy_more": "Купить еще",
+    "go_to_faucet": "Перейти к крану",
     "get_ether": "Получите эфир для сети {{networkName}}.",
     "insufficient_tokens": "Недостаточно {{token}}",
     "invalid_address": "Неверный адрес",
@@ -798,7 +883,8 @@
     "no_camera_permission": "Камера не авторизована. Предоставьте разрешение и повторите попытку",
     "invalid_qr_code_sign": "Неверный QR-код. Проверьте ваше оборудование и повторите попытку.",
     "no_camera_permission_android": "Чтобы продолжить, вам необходимо предоставить MetaMask доступ к вашей камере. Вам также может потребоваться изменить системные настройки.",
-    "mismatched_qr_request_id": "Несоответствующие данные о транзакции. Используйте свой Keystone, чтобы подписать QR-код ниже, и нажмите «Получить подпись»."
+    "mismatched_qr_request_id": "Несоответствующие данные о транзакции. Используйте свой Keystone, чтобы подписать QR-код ниже, и нажмите «Получить подпись».",
+    "hex_data_copied": "Шестнадцатеричные данные скопированы в буфер обмена"
   },
   "custom_gas": {
     "total": "Итого",
@@ -851,7 +937,8 @@
     "close": "Закрыть",
     "all_set": "Все готово!",
     "all_set_desc": "Вы успешно задали разрешения для этого сайта.",
-    "must_be_at_least": "Должен быть не менее {{allowance}}"
+    "must_be_at_least": "Должен быть не менее {{allowance}}",
+    "access_up_to": "Доступ до:"
   },
   "browser": {
     "title": "Браузер",
@@ -1027,7 +1114,39 @@
     "other_networks": "Другие сети",
     "close": "Закрыть",
     "status_ok": "Все системы работают",
-    "status_not_ok": "В сети возникли роблемы"
+    "status_not_ok": "В сети возникли роблемы",
+    "want_to_add_network": "Хотите добавить эту сеть?",
+    "network_infomation": "Это позволит использовать эту сеть в MetaMask",
+    "network_endorsement": "MetaMask не одобряет пользовательские сети и их безопасность.",
+    "learn_about": "Подробнее о",
+    "network_risk": "мошенничестве и рисках безопасности сети",
+    "network_display_name": "Экранное имя",
+    "network_chain_id": "Ид. блокчейна",
+    "network_rpc_url": "URL сети",
+    "view_details": "Просмотр сведений",
+    "network_details": "Сведения о сети",
+    "network_currency_symbol": "Символ валюты",
+    "network_block_explorer_url": "URL-адрес обозревателя блоков",
+    "search": "Поиск ранее добавленной сети",
+    "add": "Добавить",
+    "cancel": "Отмена",
+    "approve": "Одобрить",
+    "malicious_network_warning": "Вредоносный сетевой провайдер может дезинформировать о состоянии блокчейна и записывать ваши действия в сети. Добавляйте только те пользовательские сети, которым доверяете.",
+    "security_link": "https://metamask.zendesk.com/hc/en-us/articles/4404424659995",
+    "network_warning_title": "Информация о сети",
+    "network_warning_desc": "Это сетевое подключение зависит от третьих сторон. Оно может быть менее надежным или позволять третьим лицам отслеживать активность.",
+    "learn_more": "Подробнее",
+    "learn_more_url": "https://metamask.zendesk.com/hc/en-us/articles/4417500466971",
+    "switch_network": "Переключиться на сеть",
+    "new_network": "Добавлена новая сеть",
+    "network_name": "Сеть {{networkName}}",
+    "network_added": " теперь доступна в селекторе сети.",
+    "provider": "Поставщику доверяют сообщать баланс вашего кошелька и достоверно транслировать транзакции",
+    "no_match": "Совпадений не найдено.",
+    "empty_popular_networks": "Вы добавили все популярные сети. Больше сетей можно найти",
+    "add_other_network_here": "здесь.",
+    "you_can": "Или вы можете",
+    "add_network": "добавить другие сети вручную."
   },
   "select": {
     "cancel": "Отмена",
@@ -1579,9 +1698,11 @@
     "no_providers_available": "Нет доступных поставщиков",
     "try_different_amount_to_buy_input": "Попробуйте либо выбрать другой способ оплаты, либо увеличить или уменьшить сумму, которую вы хотите купить!",
     "webview_received_error": "WebView получил код состояния ошибки: {{code}}",
+    "no_tokens_available_title": "Нет доступных токенов",
     "no_tokens_available": "There are currently no cryptocurrencies available to purchase on {{network}} in {{region}}",
-    "try_different_region": "Try a different region",
-    "return_home": "Return to Home Screen",
+    "change_payment_method": "Изменить способ оплаты",
+    "try_different_region": "Попробуйте другой регион",
+    "return_home": "Назад на главный экран",
     "region": {
       "buy_crypto_tokens": "Купить криптотокены",
       "title": "Выберите свой регион",
@@ -1598,33 +1719,35 @@
       "unsupported_link": "Открыть статью поддержку"
     },
     "order_details": {
-      "details_main": "Order Details",
-      "successful": "Order Successful!",
-      "your": "Your",
-      "available_in_account": "is now available in your account",
-      "crypto": "crypto",
-      "failed": "Order Failed",
-      "failed_description": "Something went wrong, and {{provider}} was unable to complete your order. Please try again or with another provider.",
-      "the_provider": "the provider",
-      "processing": "Processing Order",
-      "processing_card_description": "Credit/Debit purchases typically take a few minutes",
-      "processing_bank_description": "Bank transfers typically take a few business days",
-      "details": "Order details",
-      "via": "via",
-      "purchase_amount": "Purchase Amount Total",
-      "etherscan": "View full details on",
-      "another_purchase": "Make another purchase",
-      "questions": "Questions?",
-      "contact": "Contact",
-      "support": "Support",
-      "id": "Order ID",
-      "date_and_time": "Date and Time",
-      "payment_method": "Payment Method",
-      "token_amount": "Token Amount",
-      "exchange_rate": "Exchange Rate",
-      "total_fees": "Total Fees",
-      "amount": "Amount",
-      "a_block_explorer": "a block explorer"
+      "details_main": "Свдеения об ордере",
+      "successful": "Ордер оформлен!",
+      "your": "Ваш(-а/е)",
+      "available_in_account": "теперь доступен(-а/о) в вашем счете",
+      "crypto": "криптовалюта",
+      "failed": "Ошибка ордера",
+      "cancelled": "Order Canceled",
+      "failed_description": "Что-то пошло не так, и {{provider}} не смог выполнить ваш ордер. Повторите попытку или обратитесь к другому поставщику.",
+      "the_provider": "поставщик",
+      "processing": "Ордер обрабатывается",
+      "processing_card_description": "Покупки по кредитным/дебетовым картам обычно занимают несколько минут",
+      "processing_bank_description": "Банковские переводы обычно доставляются в течение нескольких рабочих дней",
+      "details": "Сведения об ордере",
+      "via": "через",
+      "purchase_amount": "Общая сумма покупки",
+      "etherscan": "Смотреть все сведения на",
+      "another_purchase": "Купить еще раз",
+      "questions": "Вопросы?",
+      "contact_support": "Contact support",
+      "support": "Поддержка",
+      "view_order_status": "View order status on {{provider}}",
+      "id": "Ид. ордера",
+      "date_and_time": "Дата и время",
+      "payment_method": "Способ оплаты",
+      "token_amount": "Количество токенов",
+      "exchange_rate": "Обменный курс",
+      "total_fees": "Итого комиссий",
+      "amount": "Сумма",
+      "a_block_explorer": "обозреватель блоков"
     }
   },
   "swaps": {
@@ -1836,6 +1959,17 @@
     "copied_clipboard": "Скопирована в буфер обмена",
     "ok": "ОК"
   },
+  "whats_new": {
+    "title": "Посмотрите, что нового",
+    "feature_token_detection_title": "Improved token detection is here",
+    "feature_token_detection_description": "Improved token detection is currently available on Ethereum Mainnet, Polygon, BSC, and Avalanche network. More to come!\n\nWe source tokens from 3rd party tokens lists. Tokens listed on more than two token lists will be automatically detected.\n\nToken detection feature is ON by default. But you can disable it from Settings.",
+    "feature_token_detection_button_text": "Visit in Settings",
+    "feature_token_security_title_1": "Scam and security risks",
+    "feature_token_security_description_1": "Tokens can be created by anyone and can have duplicate names. If you see a token appear that you don’t trust or haven’t interacted with - its safer to not trust it.",
+    "feature_token_security_title_2": "Long press to hide tokens",
+    "feature_token_security_description_2": "On MetaMask mobile app, you can always hide tokens by long pressing on the token, and select ‘Hide’.",
+    "feature_token_security_button_text": "Let's start!"
+  },
   "invalid_network": {
     "title": "Идентификатор блокчейна для пользовательской сети \n %{network} \n необходимо ввести заново.",
     "message": "Чтобы защитить вас от злонамеренных действий или ошибок поставщиков услуг сети, теперь для всех пользовательских сетей необходимо указать идентификаторы блокчейна.",
@@ -1886,10 +2020,10 @@
     "learn_more": {
       "title": "Как мне выбрать?",
       "intro": "Выбор правильной платы за газ зависит от типа транзакции и ее важности для вас.",
-      "high_label": "Высокий",
-      "high_text": "Это лучше всего подходит для транзакций, чувствительных ко времени (например, обмен), поскольку увеличивает вероятность успешной транзакции. Если обработка обмена занимает слишком много времени, он может завершиться неудачно и привести к потере части вашей платы за газ.",
-      "medium_label": "Средний",
-      "medium_text": "Средняя плата за газ хорошо подходит для отправки и вывода средств или других транзакций, не зависящих от времени. Этот параметр чаще всего позволяет успешно выполнить транзакцию.",
+      "aggressive_label": "Агрессивный",
+      "aggressive_text": "Высокая вероятность даже на волатильных рынках. Используйте агрессивный подход, чтобы компенсировать скачки сетевого трафика из-за таких событий, как дропы популярных NFT.",
+      "market_label": "Рынок",
+      "market_text": "Используйте рынок для быстрой обработки по текущей рыночной цене.",
       "low_label": "Низкий",
       "low_text": "Низкую плату за газ следует использовать только для незначительных транзакций или при очень низком сетевом трафике. При более низкой плате может быть трудно предсказать, когда ваша транзакция будет успешно выполнена (и будет ли она выполнена вообще).",
       "link": "Подробнее о настройке газа."
@@ -1912,6 +2046,9 @@
     "low": "Низкий",
     "medium": "Средний",
     "high": "Высокий",
+    "market": "Рынок",
+    "aggressive": "Агрессивный",
+    "low_fee_warning": "Обратите внимание на время обработки. Будущие транзакции будут стоять в очереди после этой.",
     "edit_priority": "Изменить приоритет",
     "speed_up_transaction": "Ускорить транзакцию",
     "cancel_transaction": "Отменить транзакцию",
@@ -1996,5 +2133,9 @@
     "token_detection_mainnet_title": "Обнаружение токенов включено, поэтому многие токены автоматически появятся в вашем кошельке.",
     "token_detection_mainnet_link": "Вы также можете добавлять токены вручную.",
     "or": "или"
+  },
+  "download_files": {
+    "error": "Не удалось загрузить вложение.",
+    "unknownError": "Произошла неизвестная ошибка"
   }
 }
